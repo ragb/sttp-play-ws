@@ -1,28 +1,44 @@
 import Dependencies._
 
-lazy val root = (project in file(".")).
-  settings(
-    inThisBuild(List(
-      organization := "com.ruiandrebatista",
-      scalaVersion := "2.12.8",
-      crossScalaVersions := Seq("2.11.12", "2.12.8"),
-      version      := "0.1.0-SNAPSHOT",
-      organizationName := "Rui Batista",
-      startYear := Some(2018),
-      licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt"))
-    )),
-    name := "sttp-play-ws",
-    libraryDependencies ++= Seq(
-      sttpCore,
-      playWs,
-      playAhcWs, // should depend in core?
-      (sttpCore classifier "tests") % Test,
-      scalatest % Test,
-      akkaHttp % Test,
-      akkaStreams % Test,
-      akkaHttpCors % Test,
-    ),
-    addCompilerPlugin("org.spire-math" % "kind-projector" % kindProjectorVersion cross CrossVersion.binary),
-    git.useGitDescribe := true
+lazy val root: Project = (project in file("."))
+  .settings(
+    publishArtifact := false
   )
-  .enablePlugins(GitVersioning)
+  .aggregate(play26Project, play27Project)
+
+val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
+  List(
+    organization := "com.ruiandrebatista",
+    scalaVersion := "2.12.8",
+    crossScalaVersions := Seq("2.11.12", "2.12.8"),
+    version := "0.1.0-SNAPSHOT",
+    organizationName := "Rui Batista",
+    startYear := Some(2018),
+    licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt"))
+  )) ++ Seq(
+  scalaSource in Compile := (LocalProject("root") / baseDirectory).value / "common" / "src" / "main" / "scala",
+  scalaSource in Test := (LocalProject("root") / baseDirectory).value / "common" / "src" / "test" / "scala",
+  libraryDependencies ++= Seq(
+    sttpCore,
+    (sttpCore classifier "tests") % Test,
+    scalatest % Test,
+    akkaHttp % Test,
+    akkaStreams % Test,
+    akkaHttpCors % Test
+  ),
+  addCompilerPlugin("org.spire-math" % "kind-projector" % kindProjectorVersion cross CrossVersion.binary),
+  git.useGitDescribe := true
+)
+
+def sttpPlayWsProject(playVersion: String, sufix: String, id: String) =
+  Project(id = id, base = file(id))
+    .settings(commonSettings: _*)
+    .settings(
+      name := s"sttp-play-ws-$sufix",
+      libraryDependencies ++= playWsDependencies(playVersion)
+    )
+
+lazy val play26Project = sttpPlayWsProject(play26Version, "26", "play26")
+lazy val play27Project = sttpPlayWsProject(play27Version, "27", "play27")
+
+enablePlugins(GitVersioning)

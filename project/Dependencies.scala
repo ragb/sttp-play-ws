@@ -3,8 +3,11 @@ import sbt._
 object Dependencies {
 
   lazy val sttpCore = "com.softwaremill.sttp" %% "core" % sttpVersion
-  lazy val playWs = "com.typesafe.play" %% "play-ws" % playVersion
-  lazy val playAhcWs = "com.typesafe.play" %% "play-ahc-ws" % playVersion
+  def playWs(playVersion: String) = "com.typesafe.play" %% "play-ws" % playVersion
+  def playAhcWs(playVersion: String) = "com.typesafe.play" %% "play-ahc-ws" % playVersion
+
+  def playWsDependencies(playVersion: String) = Seq(playWs(playVersion), playAhcWs(playVersion))
+
   lazy val scalatest = "org.scalatest" %% "scalatest" % scalatestVersion
 
   // Akka hhttp deps
@@ -13,7 +16,8 @@ object Dependencies {
   lazy val akkaHttpCors = "ch.megard" %% "akka-http-cors" % akkaHttpCorsVersion
 
   val sttpVersion = "1.5.11"
-  val playVersion = "2.6.17"
+  val play26Version = "2.6.17"
+  val play27Version = "2.7.0"
 
   val scalatestVersion = "3.0.5"
   val akkaHttpCorsVersion = "0.3.3"
