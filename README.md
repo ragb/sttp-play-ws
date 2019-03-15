@@ -1,5 +1,7 @@
 ## sttp-play-ws ##
 
+[![Build Status](https://travis-ci.org/ragb/sttp-play-ws.svg?branch=master)](https://travis-ci.org/ragb/sttp-play-ws)
+
 [STTP][sttp] backend for [play-ws][playws]
 
 
