@@ -8,7 +8,7 @@ lazy val root: Project = (project in file("."))
 
 val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
   List(
-    organization := "com.ruiandrebatista",
+    organization := "com.ruiandrebatista.sttp",
     scalaVersion := "2.12.8",
     crossScalaVersions := Seq("2.11.12", "2.12.8"),
     version := "0.1.0-SNAPSHOT",
@@ -34,7 +34,7 @@ def sttpPlayWsProject(playVersion: String, sufix: String, id: String) =
   Project(id = id, base = file(id))
     .settings(commonSettings: _*)
     .settings(
-      name := s"sttp-play-ws-$sufix",
+      name := s"play-ws-$sufix",
       libraryDependencies ++= playWsDependencies(playVersion)
     )
 
