@@ -12,11 +12,11 @@ If you develop HTTP clients with sttp to be used, e.g. on an Akka based micro Se
 
 ### Getting Started ###
  
- Include the following on your build.sbt or similar:
+Include the following on your build.sbt or similar:
  
  
 ```scala
-libraryDependencies += "com.ruiandrebatista.sttp" %% "sttp-play-ws-<playVersion>" % "0.1.0"
+libraryDependencies += "com.ruiandrebatista" %% "sttp-play-ws-<playVersion>" % "0.1.0"
 ```
 
 This library is published for both play 2.6 and 2.7.
@@ -24,18 +24,17 @@ Check the following table for artifact name and associated play versions you mig
 
 | Artifact Name   | Play Version |
 |-----------------|--------------|
-| sttp-play-ws-26 | 2.6.17       |
-| sttp-play-ws-27 | 2.7.0             |
+| sttp-play-ws-26 | 2.6.23       |
+| sttp-play-ws-27 | 2.7.2             |
 
 ### Usage with Guice ###
 
-
+TBD
 
 
 ### Notes ###
 
-This library depends on `
-play-ws` (ense many play dependencies) and not on the play-ws-standalone project. This is due to the missing multipart support on the standalone artifact.
+This library depends on `play-ws` (ense many play dependencies) and not on the play-ws-standalone project. This is due to the missing multipart support on the standalone artifact.
 When this gets sorted library will probably change to depend solely on play-ws-standalone.
 
 
