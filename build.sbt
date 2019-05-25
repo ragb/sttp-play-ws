@@ -14,8 +14,17 @@ val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
     scalaVersion := "2.12.8",
     crossScalaVersions := Seq("2.11.12", "2.12.8"),
     organizationName := "Rui Batista",
-      startYear := Some(2019),
-    licenses := Seq(("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")))
+    startYear := Some(2018),
+    licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")),
+    homepage := Some(url("https://github.com/ragb/sttp-play-ws")),
+    developers := List(
+      Developer(
+        "ragb",
+        "Rui Batista",
+        "ruiandrebatista@gmail.com",
+        url("http://www.ruiandrebatista.com")
+      )
+    )
   )) ++ Seq(
   scalaSource in Compile := (LocalProject("root") / baseDirectory).value / "common" / "src" / "main" / "scala",
   scalaSource in Test := (LocalProject("root") / baseDirectory).value / "common" / "src" / "test" / "scala",

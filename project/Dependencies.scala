@@ -20,8 +20,8 @@ object Dependencies {
   val play27Version = "2.7.2"
 
   val scalatestVersion = "3.0.5"
-  val akkaHttpCorsVersion = "0.3.3"
-  val akkaHttpVersion = "10.1.7"
+  val akkaHttpCorsVersion = "0.4.0"
+  val akkaHttpVersion = "10.1.8"
   val akkaStreamsVersion = "2.5.19"
   val kindProjectorVersion = "0.9.7"
 
