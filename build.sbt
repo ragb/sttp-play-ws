@@ -2,7 +2,9 @@ import Dependencies._
 
 lazy val root: Project = (project in file("."))
   .settings(
-    publishArtifact := false
+    publishArtifact := false,
+    publishLocal := {},
+    publish := {}
   )
   .aggregate(play26Project, play27Project)
 
@@ -12,8 +14,8 @@ val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
     scalaVersion := "2.12.8",
     crossScalaVersions := Seq("2.11.12", "2.12.8"),
     organizationName := "Rui Batista",
-    startYear := Some(2018),
-    licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt"))
+      startYear := Some(2019),
+    licenses := Seq(("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")))
   )) ++ Seq(
   scalaSource in Compile := (LocalProject("root") / baseDirectory).value / "common" / "src" / "main" / "scala",
   scalaSource in Test := (LocalProject("root") / baseDirectory).value / "common" / "src" / "test" / "scala",
@@ -36,8 +38,10 @@ def sttpPlayWsProject(playVersion: String, sufix: String, id: String) =
       name := s"play-ws-$sufix",
       libraryDependencies ++= playWsDependencies(playVersion)
     )
+.enablePlugins(GitVersioning)
 
 lazy val play26Project = sttpPlayWsProject(play26Version, "26", "play26")
 lazy val play27Project = sttpPlayWsProject(play27Version, "27", "play27")
 
-enablePlugins(GitVersioning)
+
+
