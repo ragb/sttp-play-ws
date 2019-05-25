@@ -16,16 +16,28 @@ Include the following on your build.sbt or similar:
  
  
 ```scala
-libraryDependencies += "com.ruiandrebatista" %% "sttp-play-ws-<playVersion>" % "0.1.1"
+libraryDependencies += "com.ruiandrebatista" %% "sttp-play-ws-<playVersion>" % "<latest>"
 ```
 
 This library is published for both play 2.6 and 2.7.
-Check the following table for artifact name and associated play versions you might use for the artifact name.
+Check the following table for artifact names, versions and associated play versions you might use for the artifact name.
 
-| Artifact Name   | Play Version |
-|-----------------|--------------|
-| sttp-play-ws-26 | 2.6.23       |
-| sttp-play-ws-27 | 2.7.2             |
+| Artifact Name   | Play Version | Latest Version                                                                                                                                                                                                     |
+|-----------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| sttp-play-ws-26 | 2.6.23       | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-26_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-26_2.12) |
+| sttp-play-ws-27 | 2.7.2        |                                                                                                                                                                                                                    [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-27_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-27_2.12)|
+
+### Features ###
+
+Supports all *tested* features of sttp backends. Uses sttp own tests(pooled automatically) for unit testing of this backend.
+
+Main supported features:
+
+* Streaming (using `akka.stream.Source[ByteString, _]`
+* Proxy support
+* Multipart uploads.
+
+
 
 ### Usage with Guice ###
 
