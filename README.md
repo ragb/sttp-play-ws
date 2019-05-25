@@ -16,7 +16,7 @@ Include the following on your build.sbt or similar:
  
  
 ```scala
-libraryDependencies += "com.ruiandrebatista" %% "sttp-play-ws-<playVersion>" % "0.1.0"
+libraryDependencies += "com.ruiandrebatista" %% "sttp-play-ws-<playVersion>" % "0.1.1"
 ```
 
 This library is published for both play 2.6 and 2.7.
