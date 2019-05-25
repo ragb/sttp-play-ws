@@ -11,7 +11,6 @@ val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
     organization := "com.ruiandrebatista",
     scalaVersion := "2.12.8",
     crossScalaVersions := Seq("2.11.12", "2.12.8"),
-    version := "0.1.0-SNAPSHOT",
     organizationName := "Rui Batista",
     startYear := Some(2018),
     licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt"))
