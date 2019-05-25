@@ -43,7 +43,7 @@ def sttpPlayWsProject(playVersion: String, sufix: String, id: String) =
   Project(id = id, base = file(id))
     .settings(commonSettings: _*)
     .settings(
-      name := s"play-ws-$sufix",
+      name := s"sttp-play-ws-$sufix",
       libraryDependencies ++= playWsDependencies(playVersion)
     )
 
