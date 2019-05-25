@@ -19,7 +19,7 @@ Include the following on your build.sbt or similar:
 libraryDependencies += "com.ruiandrebatista" %% "sttp-play-ws-<playVersion>" % "<latest>"
 ```
 
-This library is published for both play 2.6 and 2.7.
+This library is published for both play 2.6 and 2.7, and scala 2.11 and 2.12.
 Check the following table for artifact names, versions and associated play versions you might use for the artifact name.
 
 | Artifact Name   | Play Version | Latest Version                                                                                                                                                                                                     |
