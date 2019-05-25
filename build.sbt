@@ -36,8 +36,7 @@ val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
     akkaStreams % Test,
     akkaHttpCors % Test
   ),
-  addCompilerPlugin("org.spire-math" % "kind-projector" % kindProjectorVersion cross CrossVersion.binary),
-  git.useGitDescribe := true
+  addCompilerPlugin("org.spire-math" % "kind-projector" % kindProjectorVersion cross CrossVersion.binary)
 )
 
 def sttpPlayWsProject(playVersion: String, sufix: String, id: String) =
