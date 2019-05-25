@@ -24,8 +24,8 @@ Check the following table for artifact names, versions and associated play versi
 
 | Artifact Name   | Play Version | Latest Version                                                                                                                                                                                                     |
 |-----------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| sttp-play-ws-26 | 2.6.23       | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-26_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-26_2.12) |
-| sttp-play-ws-27 | 2.7.2        |                                                                                                                                                                                                                    [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-27_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-27_2.12)|
+| sttp-play-ws-26 | 2.6.23       | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-26_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-26_2.12) |
+| sttp-play-ws-27 | 2.7.2        |                                                                                                                                                                                                                    [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-27_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.ruiandrebatista/sttp-play-ws-27_2.12)|
 
 ### Features ###
 
