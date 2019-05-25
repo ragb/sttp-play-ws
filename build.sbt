@@ -8,7 +8,7 @@ lazy val root: Project = (project in file("."))
 
 val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
   List(
-    organization := "com.ruiandrebatista.sttp",
+    organization := "com.ruiandrebatista",
     scalaVersion := "2.12.8",
     crossScalaVersions := Seq("2.11.12", "2.12.8"),
     version := "0.1.0-SNAPSHOT",
