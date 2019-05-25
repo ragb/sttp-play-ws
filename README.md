@@ -10,7 +10,7 @@ The main goal of this library is to allow the usage of sttp machinery in the con
 If you develop HTTP clients with sttp to be used, e.g. on an Akka based micro Service, and you need some of the same logic in your Play Frontend / backoffice application writen in play, this library may be helpful.
 
 
-### Getting it ###
+### Getting Started ###
  
  Include the following on your build.sbt or similar:
  
