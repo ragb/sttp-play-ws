@@ -46,7 +46,7 @@ def sttpPlayWsProject(playVersion: String, sufix: String, id: String) =
       name := s"play-ws-$sufix",
       libraryDependencies ++= playWsDependencies(playVersion)
     )
-.enablePlugins(GitVersioning)
+
 
 lazy val play26Project = sttpPlayWsProject(play26Version, "26", "play26")
 lazy val play27Project = sttpPlayWsProject(play27Version, "27", "play27")
