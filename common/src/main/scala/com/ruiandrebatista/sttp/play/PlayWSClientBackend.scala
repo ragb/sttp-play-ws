@@ -52,7 +52,7 @@ class PlayWSClientBackend(wsClient: WSClient, mustCloseClient: Boolean, backendO
     val (maybeBody, maybeContentType) = requestBodyToWsBodyAndContentType(request.body)
 
     val contentType = request.headers.toMap
-      .get(HeaderNames.ContentType) orElse maybeContentType getOrElse "application/octect-stream"
+      .get(HeaderNames.ContentType) orElse maybeContentType getOrElse MediaTypes.Binary
 
     // Compute our own BodyWritable, essentially bypassing
     // play BodyWritable infrastructure
