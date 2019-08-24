@@ -2,3 +2,4 @@
 /.ensime*
 target/
 .bloop
+.metals
