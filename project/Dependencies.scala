@@ -15,7 +15,7 @@ object Dependencies {
   lazy val akkaStreams = "com.typesafe.akka" %% "akka-stream" % akkaStreamsVersion
   lazy val akkaHttpCors = "ch.megard" %% "akka-http-cors" % akkaHttpCorsVersion
 
-  val sttpVersion = "1.5.17"
+  val sttpVersion = "1.6.4"
   val play26Version = "2.6.23"
   val play27Version = "2.7.2"
 
