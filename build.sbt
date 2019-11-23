@@ -11,8 +11,8 @@ lazy val root: Project = (project in file("."))
 val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
   List(
     organization := "com.ruiandrebatista",
-    scalaVersion := "2.12.8",
-    crossScalaVersions := Seq("2.11.12", "2.12.8"),
+    scalaVersion := "2.12.10",
+    crossScalaVersions := Seq("2.11.12", "2.12.10"),
     organizationName := "Rui Batista",
     startYear := Some(2018),
     licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")),
