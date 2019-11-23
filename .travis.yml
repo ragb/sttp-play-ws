@@ -9,6 +9,9 @@ stages:
     if: ((branch = master AND type = push) OR (tag IS present)) AND NOT fork
 
 
+    before_install:
+  - git fetch --tags
+
 jobs:
   include:
     - env: TEST="test"
@@ -32,5 +35,3 @@ cache:
     - $HOME/.ivy2/cache
     - $HOME/.coursier
 
-before_install:
-  - git fetch --tags
