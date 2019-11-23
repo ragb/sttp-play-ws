@@ -2,7 +2,7 @@ import sbt._
 
 object Dependencies {
 
-  lazy val sttpCore = "com.softwaremill.sttp" %% "core" % sttpVersion
+  lazy val sttpCore = "com.softwaremill.sttp.client" %% "core" % sttpVersion
   def playWs(playVersion: String) = "com.typesafe.play" %% "play-ws" % playVersion
   def playAhcWs(playVersion: String) = "com.typesafe.play" %% "play-ahc-ws" % playVersion
 
@@ -15,7 +15,7 @@ object Dependencies {
   lazy val akkaStreams = "com.typesafe.akka" %% "akka-stream" % akkaStreamsVersion
   lazy val akkaHttpCors = "ch.megard" %% "akka-http-cors" % akkaHttpCorsVersion
 
-  val sttpVersion = "1.6.4"
+  val sttpVersion = "2.0.0-RC2"
   val play26Version = "2.6.23"
   val play27Version = "2.7.2"
 
