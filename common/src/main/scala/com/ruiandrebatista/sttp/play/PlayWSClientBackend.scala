@@ -185,7 +185,7 @@ final class PlayWSClientBackend private (wsClient: WSClient, mustCloseClient: Bo
   def close(): Future[Unit] =
     if (mustCloseClient)
       Future(wsClient.close())
-    else Future.unit
+    else Future.successful(())
 
 
   private def saveFile(file: File, response: StandaloneWSResponse) = {
