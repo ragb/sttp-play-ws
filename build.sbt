@@ -1,18 +1,19 @@
-import Dependencies._
-
 lazy val root: Project = (project in file("."))
   .settings(
     publishArtifact := false,
     publishLocal := {},
     publish := {}
   )
-  .aggregate(play26Project, play27Project)
+  .aggregate(
+    play26Project,
+    play27Project,
+    play28Project
+  )
 
 val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
   List(
     organization := "com.ruiandrebatista",
-    scalaVersion := "2.12.10",
-    crossScalaVersions := Seq("2.11.12", "2.12.10"),
+    scalaVersion := "2.12.11",
     organizationName := "Rui Batista",
     startYear := Some(2018),
     licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")),
@@ -25,31 +26,54 @@ val commonSettings: Seq[Def.Setting[_]] = inThisBuild(
         url("http://www.ruiandrebatista.com")
       )
     )
-  )) ++ Seq(
+  )
+) ++ Seq(
   scalaSource in Compile := (LocalProject("root") / baseDirectory).value / "common" / "src" / "main" / "scala",
   scalaSource in Test := (LocalProject("root") / baseDirectory).value / "common" / "src" / "test" / "scala",
-  libraryDependencies ++= Seq(
-    sttpCore,
-    (sttpCore classifier "tests") % Test,
-    scalatest % Test,
-    akkaHttp % Test,
-    akkaStreams % Test,
-    akkaHttpCors % Test
+  unmanagedResourceDirectories in Test ++= Seq(
+    (LocalProject("root") / baseDirectory).value / "common" / "src" / "test" / "resources"
   ),
-  addCompilerPlugin("org.spire-math" % "kind-projector" % kindProjectorVersion cross CrossVersion.binary)
+  fork in Test := true,
+  libraryDependencies ++= Seq(
+    "com.softwaremill.sttp.client" %% "core" % "2.0.0-RC2",
+    ("com.softwaremill.sttp.client" %% "core" % "2.0.0-RC2" classifier "tests") % Test,
+    "org.scalatest" %% "scalatest" % "3.0.8" % Test,
+    "com.typesafe.akka" %% "akka-http" % "10.1.8" % Test,
+    "com.typesafe.akka" %% "akka-stream" % "2.5.31" % Test,
+    "ch.megard" %% "akka-http-cors" % "0.4.2" % Test,
+    "ch.qos.logback" % "logback-classic" % "1.2.3" % Test
+  )
 )
 
-def sttpPlayWsProject(playVersion: String, sufix: String, id: String) =
-  Project(id = id, base = file(id))
-    .settings(commonSettings: _*)
-    .settings(
-      name := s"sttp-play-ws-$sufix",
-      libraryDependencies ++= playWsDependencies(playVersion)
+lazy val play26Project = Project("play26", file("play26"))
+  .settings(commonSettings)
+  .settings(
+    name := "sttp-play-ws-26",
+    crossScalaVersions := Seq("2.11.12", "2.12.11"),
+    libraryDependencies ++= Seq(
+      "com.typesafe.play" %% "play-ws" % "2.6.23",
+      "com.typesafe.play" %% "play-ahc-ws" % "2.6.23"
     )
+  )
 
+lazy val play27Project = Project("play27", file("play27"))
+  .settings(commonSettings)
+  .settings(
+    name := "sttp-play-ws-27",
+    crossScalaVersions := Seq("2.11.12", "2.12.11", "2.13.2"),
+    libraryDependencies ++= Seq(
+      "com.typesafe.play" %% "play-ws" % "2.7.5",
+      "com.typesafe.play" %% "play-ahc-ws" % "2.7.5"
+    )
+  )
 
-lazy val play26Project = sttpPlayWsProject(play26Version, "26", "play26")
-lazy val play27Project = sttpPlayWsProject(play27Version, "27", "play27")
-
-
-
+lazy val play28Project = Project("play28", file("play28"))
+  .settings(commonSettings)
+  .settings(
+    name := "sttp-play-ws-28",
+    crossScalaVersions := Seq("2.12.10", "2.13.2"),
+    libraryDependencies ++= Seq(
+      "com.typesafe.play" %% "play-ws" % "2.8.2",
+      "com.typesafe.play" %% "play-ahc-ws" % "2.8.2"
+    )
+  )

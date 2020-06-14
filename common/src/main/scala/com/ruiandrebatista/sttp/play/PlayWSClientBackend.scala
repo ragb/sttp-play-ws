@@ -35,12 +35,14 @@ import play.api.libs.ws.ahc.AhcWSClient
 
 import scala.concurrent.{ExecutionContext, Future}
 
-
-final class PlayWSClientBackend private (wsClient: WSClient, mustCloseClient: Boolean, backendOptions: SttpBackendOptions)(
-    implicit ec: ExecutionContext,
+final class PlayWSClientBackend private (
+    wsClient: WSClient,
+    mustCloseClient: Boolean,
+    backendOptions: SttpBackendOptions
+)(implicit
+    ec: ExecutionContext,
     mat: Materializer
 ) extends SttpBackend[Future, Source[ByteString, Any], NothingT] {
-
 
   private val maybeProxyServer = backendOptions.proxy.map { sttpProxy =>
     DefaultWSProxyServer(sttpProxy.host, sttpProxy.port, if (sttpProxy.port == 443) Some("https") else None)
@@ -110,9 +112,10 @@ final class PlayWSClientBackend private (wsClient: WSClient, mustCloseClient: Bo
       MultipartFormData.FilePart(part.name, part.fileName.getOrElse(""), part.contentType orElse ct, source)
     }
 
-    def nameWithFilename = part.fileName.fold(part.name) { fn =>
-      s"""${part.name}"; filename="$fn"""
-    }
+    def nameWithFilename =
+      part.fileName.fold(part.name) { fn =>
+        s"""${part.name}"; filename="$fn"""
+      }
 
     part.body match {
       case StringBody(s, _, _) =>
@@ -187,7 +190,6 @@ final class PlayWSClientBackend private (wsClient: WSClient, mustCloseClient: Bo
       Future(wsClient.close())
     else Future.successful(())
 
-
   private def saveFile(file: File, response: StandaloneWSResponse) = {
 
     if (!file.exists()) {
@@ -200,11 +202,9 @@ final class PlayWSClientBackend private (wsClient: WSClient, mustCloseClient: Bo
 
   override val responseMonad: MonadError[Future] = new FutureMonad
 
-
- 
   override def openWebsocket[T, WS_RESULT](
-    request: Request[T,Source[ByteString,Any]],
-    handler: NothingT[WS_RESULT]
+      request: Request[T, Source[ByteString, Any]],
+      handler: NothingT[WS_RESULT]
   ): Future[WebSocketResponse[WS_RESULT]] = ???
 
 }
