@@ -6,9 +6,10 @@ import akka.stream.ActorMaterializer
 import sttp.client._
 import sttp.client.testing._
 
-import scala.concurrent.Future
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
 
-class PlayWsStandaloneClientHttpTest extends HttpTest[Future] {
+class PlayWsClientBackendTest extends HttpTest[Future] {
   implicit private val system = ActorSystem()
   implicit private val mat = ActorMaterializer()
 
@@ -17,8 +18,8 @@ class PlayWsStandaloneClientHttpTest extends HttpTest[Future] {
   override implicit val convertToFuture: ConvertToFuture[Future] =
     ConvertToFuture.future
 
-  override def afterAll() = {
-    system.terminate()
+  override def afterAll(): Unit = {
     super.afterAll()
+    Await.result(system.terminate(), 5.seconds)
   }
 }
